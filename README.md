@@ -1,16 +1,38 @@
-# React + Vite
+# ThePulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Every Game Has a Story.**
 
-Currently, two official plugins are available:
+ThePulse is a sports dashboard concept focused on WNBA game-day storytelling, scores, schedules, featured matchups, and league leaders.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Originally created as a passion project, ThePulse has evolved into a hands-on learning experience designed to strengthen my front-end development, UX/UI design, documentation, version control, and deployment skills as I transition from student to technology professional. The project reflects my commitment to continuous learning by applying new concepts in a practical, real-world context while building something meaningful to me.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Landing page with branded entry experience
+- Featured matchup section
+- Today’s games dashboard
+- Upcoming schedule
+- League leaders
+- Team logo integration
+- Custom black/gold visual identity
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- JavaScript
+- CSS
+- HTML
+- GitHub Pages
+
+## Project Context
+
+ThePulse is part of **Project Autumn 🍁**, a larger HiddenLeaf Studios 🍃 portfolio ecosystem focused on software, cloud infrastructure, systems administration, and technical documentation.
+
+## Built By
+
+Project designed and managed by **Shanae Revell**.
+
+## Live Site
+
+https://shanaerevell.github.io/ThePulse/
