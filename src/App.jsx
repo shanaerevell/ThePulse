@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const games = [
   {
     id: 1,
@@ -36,11 +38,11 @@ const games = [
 
 const featuredMatchup = {
   awayTeam: "Chicago Sky",
-  awayLogo: "/logos/ChicagoSKY.png",
+  awayLogo: `${baseUrl}logos/ChicagoSKY.png`,
   awayRecord: "12-5",
 
   homeTeam: "Indiana Fever",
-  homeLogo: "/logos/IndFeverLogo.png",
+    homeLogo: `${baseUrl}logos/IndFeverLogo.png`,
   homeRecord: "8-9",
   time: "7:00 PM",
   watchOn: "ION",
@@ -132,7 +134,7 @@ function App() {
   return (
     <main className={`app ${entered ? "entered" : ""}`}>
       <nav className="navbar">
-        <img src="/tp-logo.png" alt="ThePulse logo" className="nav-logo" />
+        <img src={`${baseUrl}tp-logo.png`} alt="ThePulse logo" className="nav-logo" />
 
         <div className="nav-links">
           <a href="#scores">Scores</a>
