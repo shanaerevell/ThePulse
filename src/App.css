@@ -607,3 +607,9 @@ html {
     height: 88px;
   }
 }
+
+.footer-disclaimer {
+  color: #6b6b6b;
+  font-size: 13px;
+  margin: 16px 0 0;
+}

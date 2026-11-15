@@ -241,6 +241,9 @@ function App() {
           <p className="footer-brand">The Pulse</p>
           <p className="footer-credit">Project designed and managed by Shanae Revell</p>
           <p className="footer-project">Part of Project Autumn 🍁 | HiddenLeaf Studios 🍃</p>
+          <p className="footer-disclaimer">
+            Fan project. Not affiliated with Unrivaled or its clubs. Logos and names belong to their owners.
+          </p>
         </footer>
       </section>
     </main>
