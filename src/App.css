@@ -412,3 +412,198 @@ html {
   font-size: 14px;
   opacity: 0.7;
 }
+/* Two key dates sit centered instead of filling a 3-column row */
+@media (min-width: 768px) {
+  #schedule .schedule-list {
+    grid-template-columns: repeat(2, minmax(0, 340px));
+    justify-content: center;
+  }
+}
+
+.section-note {
+  text-align: center;
+  color: #a3a3a3;
+  margin: -8px 0 24px;
+}
+
+/* League switcher: Unrivaled now, more leagues later */
+.league-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.league-tab {
+  border: 1px solid #5e4a12;
+  border-radius: 999px;
+  padding: 8px 20px;
+  color: #a3a3a3;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.league-tab.active {
+  color: #050505;
+  background: #d4af37;
+  border-color: #d4af37;
+}
+
+.league-tab small {
+  font-weight: normal;
+  font-size: 12px;
+  color: #9f8221;
+}
+
+/* Club cards: logo, coach, roster, Instagram */
+.clubs-section {
+  margin-bottom: 60px;
+}
+
+.clubs-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.club-card {
+  background: #111111;
+  border: 1px solid #5e4a12;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.club-card:hover {
+  border-color: #d4af37;
+}
+
+.club-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+.club-card h3 {
+  margin: 0 0 4px;
+  color: #d8d8d8;
+}
+
+.club-coach {
+  color: #d4af37;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.club-roster {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  color: #d1d5db;
+  line-height: 1.8;
+  flex: 1;
+}
+
+.club-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #a3a3a3;
+  text-decoration: none;
+  font-size: 14px;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 14px;
+}
+
+.club-instagram:hover {
+  color: #d4af37;
+}
+
+/* Standings table */
+.standings-section {
+  margin-bottom: 60px;
+}
+
+.standings-table {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #111111;
+  border: 1px solid #5e4a12;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.standings-table th {
+  color: #d4af37;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #5e4a12;
+}
+
+.standings-table td {
+  text-align: left;
+  padding: 12px 16px;
+  color: #d1d5db;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.standings-table tr:last-child td {
+  border-bottom: none;
+}
+
+.standings-table th:nth-child(n + 3),
+.standings-table td:nth-child(n + 3) {
+  text-align: center;
+  width: 56px;
+}
+
+.standings-club {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.standings-club img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.standings-table th:first-child,
+.standings-table td:first-child {
+  width: 40px;
+  color: #9f8221;
+}
+
+.standings-club {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .standings-table th,
+  .standings-table td {
+    padding: 12px 10px;
+  }
+
+  .landing-hero h1 {
+    font-size: 68px;
+  }
+
+  .club-logo {
+    width: 88px;
+    height: 88px;
+  }
+}

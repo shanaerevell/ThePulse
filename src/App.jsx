@@ -3,131 +3,101 @@ import "./App.css";
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const games = [
+// Season info. In v1 this moves to a season.json file the app fetches.
+const season = {
+  name: "Unrivaled Season 3",
+  tipOff: "January 8, 2027",
+  finale: "March 5, 2027",
+};
+
+// The 8 clubs and their 2027 rosters (announced Nov 4, 2026). Everyone starts 0-0.
+const clubs = [
   {
-    id: 1,
-    awayTeam: "Las Vegas Aces",
-    homeTeam: "New York Liberty",
-    awayScore: 82,
-    homeScore: 79,
-    status: "Final",
-    topPerformer: "A'ja Wilson - 28 PTS, 12 REB",
-    watchOn: "ESPN",
+    id: "breeze", name: "Breeze BC", coach: "Jarell Christian", instagram: "breezebasketballclub",
+    roster: ["Paige Bueckers", "Kahleah Copper", "Dominique Malonga", "Kaitlyn Chen", "DiJonai Carrington", "Monique Billings"],
+    wins: 0, losses: 0,
   },
   {
-    id: 2,
-    awayTeam: "Seattle Storm",
-    homeTeam: "Phoenix Mercury",
-    awayScore: 76,
-    homeScore: 80,
-    status: "Live",
-    topPerformer: "Awa Fam - 22 PTS, 7 AST",
-    watchOn: "Prime Video",
+    id: "hive", name: "Hive BC", coach: "Barb Turner", instagram: "hivebc",
+    roster: ["Olivia Miles", "Sonia Citron", "Cameron Brink", "Natisha Hiedeman", "Rae Burrell", "Naz Hillmon"],
+    wins: 0, losses: 0,
   },
   {
-    id: 3,
-    awayTeam: "Chicago Sky",
-    homeTeam: "Indiana Fever",
-    awayScore: 0,
-    homeScore: 0,
-    status: "7:00 PM",
-    topPerformer: "Not started yet",
-    watchOn: "ION",
+    id: "laces", name: "Laces BC", coach: "Andrew Wade", instagram: "lacesbc",
+    roster: ["Jackie Young", "Gabby Williams", "Jess Shepard", "Marine Johannès", "Maddy Siegrist", "Satou Sabally"],
+    wins: 0, losses: 0,
+  },
+  {
+    id: "lunar-owls", name: "Lunar Owls BC", coach: "Pokey Chatman", instagram: "lunarowlsbc",
+    roster: ["Courtney Williams", "Marina Mabrey", "Napheesa Collier", "Skylar Diggins", "Sydney Taylor", "Temi Fágbénlé"],
+    wins: 0, losses: 0,
+  },
+  {
+    id: "mist", name: "Mist BC", coach: "Zach O'Brien", instagram: "mistbc",
+    roster: ["Veronica Burton", "Bridget Carleton", "Breanna Stewart", "Arike Ogunbowale", "Kiki Rice", "Izzy Harrison"],
+    wins: 0, losses: 0,
+  },
+  {
+    id: "phantom", name: "Phantom BC", coach: "Roneeka Hodges", instagram: "phantombc",
+    roster: ["Kelsey Plum", "Kayla McBride", "Aaliyah Edwards", "Natasha Cloud", "Tiffany Hayes", "Li Yueru"],
+    wins: 0, losses: 0,
+  },
+  {
+    id: "rose", name: "Rose BC", coach: "Nola Henry", instagram: "rosebc",
+    roster: ["Chelsea Gray", "Brittney Sykes", "Shakira Austin", "Aziaha James", "Lexie Hull", "Kayla Thornton"],
+    wins: 0, losses: 0,
+  },
+  {
+    id: "vinyl", name: "Vinyl BC", coach: "Teresa Weatherspoon", instagram: "vinylbc",
+    roster: ["Allisha Gray", "Rhyne Howard", "Dearica Hamby", "Jordin Canada", "Flau'jae Johnson", "Aneesah Morrow"],
+    wins: 0, losses: 0,
   },
 ];
 
-const featuredMatchup = {
-  awayTeam: "Chicago Sky",
-  awayLogo: `${baseUrl}logos/ChicagoSKY.png`,
-  awayRecord: "12-5",
+const logo = (club) => `${baseUrl}logos/unrivaled/${club.id}.png`;
 
-  homeTeam: "Indiana Fever",
-    homeLogo: `${baseUrl}logos/IndFeverLogo.png`,
-  homeRecord: "8-9",
-  time: "7:00 PM",
-  watchOn: "ION",
-  story: "A new chapter in this fierce rivalry. ",
-  };
+// Leagues the dashboard can show. Only Unrivaled is live for now.
+const leagues = [
+  { id: "unrivaled", name: "Unrivaled", active: true },
+  { id: "wnba", name: "WNBA", active: false },
+];
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
 
 const schedule = [
   {
     id: 1,
-    matchup: "Chicago Sky vs Indiana Fever",
-    date: "Tonight",
-    time: "7:00 PM",
-    watchOn: "ION",
+    matchup: "Opening Night",
+    date: season.tipOff,
+    note: "Matchups announced with the official schedule",
   },
   {
     id: 2,
-    matchup: "Seattle Storm vs Phoenix Mercury",
-    date: "Tomorrow",
-    time: "6:30 PM",
-    watchOn: "Prime Video",
-  },
-  {
-    id: 3,
-    matchup: "Las Vegas Aces vs New York Liberty",
-    date: "Friday",
-    time: "8:00 PM",
-    watchOn: "ESPN",
+    matchup: "Regular Season Finale",
+    date: season.finale,
+    note: "Final standings set the playoff field",
   },
 ];
 
-const leagueLeaders = [
-  {
-    id: 1,
-    category: "Points",
-    player: "A'ja Wilson",
-    stat: "26.9 PPG",
-  },
-  {
-    id: 2,
-    category: "Assists",
-    player: "Caitlin Clark",
-    stat: "8.4 APG",
-  },
-  {
-    id: 3,
-    category: "Rebounds",
-    player: "Angel Reese",
-    stat: "12.1 RPG",
-  },
-  {
-    id: 4,
-    category: "Steals",
-    player: "Napheesa Collier",
-    stat: "2.1 SPG",
-  },
-  {
-    id: 5,
-    category: "Blocks",
-    player: "A'ja Wilson",
-    stat: "2.6 BPG",
-  },
-  {
-    id: 6,
-    category: "FG%",
-    player: "Brittney Griner",
-    stat: "57.8%",
-  },
-  {
-    id: 7,
-    category: "3PT%",
-    player: "Sabrina Ionescu",
-    stat: "44.2%",
-  },
-];
-
+const leaderCategories = ["Points", "Rebounds", "Assists", "3PT%"];
 
 function App() {
-  const [entered, setEntered] = useState(false);
+  // A link straight to a section (like #clubs) opens the dashboard right away
+  const [entered, setEntered] = useState(() => window.location.hash !== "");
 
   function handleEnter() {
     setEntered(true);
-  
+
     setTimeout(() => {
-      document.getElementById("dashboard").scrollIntoView({ behavior: "smooth",
-      });
+      document.getElementById("dashboard").scrollIntoView({ behavior: "smooth" });
     }, 300);
   }
 
@@ -137,158 +107,142 @@ function App() {
         <img src={`${baseUrl}tp-logo.png`} alt="ThePulse logo" className="nav-logo" />
 
         <div className="nav-links">
-          <a href="#scores">Scores</a>
-          <a href="#schedule">Schedule</a>
+          <a href="#clubs">Clubs</a>
+          <a href="#standings">Standings</a>
+          <a href="#schedule">Key Dates</a>
           <a href="#leaders">League Leaders</a>
         </div>
       </nav>
+
       <section className="hero landing-hero">
         <h1>The<span>Pulse</span></h1>
 
-<h2 className="tagline">
-  Every Game Has a Story.
-</h2>
+        <h2 className="tagline">Every Game Has a Story.</h2>
 
-<p className="subtitle">
-  Follow every game.
-  <br />
-  Track every player.
-  <br />
-  Never miss a moment.
-</p>
+        <p className="subtitle">The heartbeat of women&apos;s basketball.</p>
 
-<button className="scroll-button" onClick={handleEnter}>
-  ENTER
-</button>
+        <button className="scroll-button" onClick={handleEnter}>
+          ENTER
+        </button>
 
-<p className="signature">
-
-  TP • 2026
-
-</p>
-
+        <p className="signature">TP • 2027</p>
       </section>
 
       <section className="dashboard-page" id="dashboard">
-      <section className="games-section" id="scores">
-      <section className="featured-matchup">
-        <p className="featured-label">Featured Matchup</p>
-
-        <div className="matchup-teams">
-
-  <div className="matchup-team">
-    <img
-      src={featuredMatchup.awayLogo}
-      alt={featuredMatchup.awayTeam}
-      className="featured-team-logo"
-      />
-
-    <h3>{featuredMatchup.awayTeam}</h3>
-    <p className="team-record">
-      {featuredMatchup.awayRecord}
-      </p>
-      </div>
-      
-      <div className="vs">
-        VS
-        </div>
-
-  <div className="matchup-team">
-    <img
-    src={featuredMatchup.homeLogo}
-    alt={featuredMatchup.homeTeam}
-    className="featured-team-logo"
-    />
-
-    <h3>{featuredMatchup.homeTeam}</h3>
-
-    <p className="team-record">
-      {featuredMatchup.homeRecord}
-      </p>
-      </div>
-    
-    </div>
-
-        <p className="featured-story">{featuredMatchup.story}</p>
-
-        <div className="featured-details">
-          <span>{featuredMatchup.time}</span>
-          <span> Watch on: {featuredMatchup.watchOn}</span>
-        </div>
-        </section>
-
-        <h2 className="main-section-title">Today&apos;s Games</h2>
-
-        <div className="games-grid">
-          {games.map((game) => (
-            <article className="game-card" key={game.id}>
-              <p
-                className={`game-status ${
-                  game.status === "Live"
-                    ? "live"
-                    : game.status === "Final"
-                    ? "final"
-                    : "upcoming"
-                }`}
-              >
-                {game.status}
-              </p>
-
-              <div className="team-row">
-                <span>{game.awayTeam}</span>
-                <strong>{game.awayScore}</strong>
-              </div>
-
-              <div className="team-row">
-                <span>{game.homeTeam}</span>
-                <strong>{game.homeScore}</strong>
-              </div>
-
-              <p className="top-performer">Top Performer: {game.topPerformer}</p>
-              <p className="watch-on">Watch on: {game.watchOn}</p>
-            </article>
+        <div className="league-tabs" aria-label="Leagues">
+          {leagues.map((league) => (
+            <span key={league.id} className={`league-tab ${league.active ? "active" : ""}`}>
+              {league.name}
+              {!league.active && <small>Coming soon</small>}
+            </span>
           ))}
         </div>
+
+        <section className="featured-matchup">
+          <p className="featured-label">{season.name}</p>
+          <h2>Tip-off: {season.tipOff}</h2>
+          <p className="featured-story">
+            Standings, league leaders, and a featured game each week start once the season is underway.
+          </p>
+          <div className="featured-details">
+            <span>Regular season ends {season.finale}</span>
+          </div>
+        </section>
+
+        <section className="clubs-section" id="clubs">
+          <h2 className="main-section-title">The Clubs</h2>
+
+          <div className="clubs-grid">
+            {clubs.map((club) => (
+              <article className="club-card" key={club.id}>
+                <img src={logo(club)} alt={`${club.name} logo`} className="club-logo" loading="lazy" />
+                <h3>{club.name}</h3>
+                <p className="club-coach">Head Coach: {club.coach}</p>
+                <ul className="club-roster">
+                  {club.roster.map((player) => (
+                    <li key={player}>{player}</li>
+                  ))}
+                </ul>
+                <a
+                  className="club-instagram"
+                  href={`https://www.instagram.com/${club.instagram}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <InstagramIcon /> @{club.instagram}
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="standings-section" id="standings">
+          <h2 className="section-title">Standings</h2>
+          <p className="section-note">Pre-season. Every club starts 0-0.</p>
+
+          <table className="standings-table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Club</th>
+                <th scope="col">W</th>
+                <th scope="col">L</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...clubs]
+                .sort((x, y) => y.wins - x.wins || x.losses - y.losses || x.name.localeCompare(y.name))
+                .map((club, i) => (
+                  <tr key={club.id}>
+                    <td>{i + 1}</td>
+                    <td>
+                      <span className="standings-club">
+                        <img src={logo(club)} alt="" />
+                        {club.name}
+                      </span>
+                    </td>
+                    <td>{club.wins}</td>
+                    <td>{club.losses}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </section>
+
+        <section className="schedule-section" id="schedule">
+          <h2 className="section-title">Key Dates</h2>
+
+          <div className="schedule-list">
+            {schedule.map((item) => (
+              <article className="schedule-card" key={item.id}>
+                <h3>{item.matchup}</h3>
+                <p>{item.date}</p>
+                <p>{item.note}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="leaders-section" id="leaders">
+          <h2 className="section-title">League Leaders</h2>
+          <p className="section-note">Leaders update after opening night.</p>
+
+          <div className="leaders-grid">
+            {leaderCategories.map((category) => (
+              <article className="leader-card" key={category}>
+                <p className="leader-category">{category}</p>
+                <h3>Coming soon</h3>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <footer className="footer">
+          <p className="footer-brand">The Pulse</p>
+          <p className="footer-credit">Project designed and managed by Shanae Revell</p>
+          <p className="footer-project">Part of Project Autumn 🍁 | HiddenLeaf Studios 🍃</p>
+        </footer>
       </section>
-
-      <section className="schedule-section" id="schedule">
-  <h2 className="section-title">Upcoming Schedule</h2>
-
-  <div className="schedule-list">
-    {schedule.map((game) => (
-      <article className="schedule-card" key={game.id}>
-        <h3>{game.matchup}</h3>
-        <p>
-          {game.date} at {game.time}
-        </p>
-        <p>Watch on: {game.watchOn}</p>
-      </article>
-    ))}
-    
-  </div>
-</section>
-
-<section className="leaders-section" id="leaders">
-  <h2 className="section-title">League Leaders</h2>
-
-  <div className="leaders-grid">
-    {leagueLeaders.map((leader) => (
-      <article className="leader-card" key={leader.id}>
-        <p className="leader-category">{leader.category}</p>
-        <h3>{leader.player}</h3>
-        <strong>{leader.stat}</strong>
-      </article>
-    ))}
-  </div>
-</section>
-
-<footer className="footer">
-  <p className="footer-brand">The Pulse</p>
-  <p className="footer-credit">Project designed and managed by Shanae Revell </p>
-  <p className="footer-project">Part of Project Autumn 🍁 | HiddenLeaf Studios 🍃</p>
-</footer>
-
-    </section>
     </main>
   );
 }
